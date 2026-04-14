@@ -1,8 +1,4 @@
-interface NavigationLink {
-  id: string;
-  label: string;
-  url: string;
-}
+import { NavigationLink } from "@/types/layout";
 
 interface FooterProps {
   title: string;

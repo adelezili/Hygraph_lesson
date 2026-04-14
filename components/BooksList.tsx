@@ -1,18 +1,16 @@
-import { Suspense } from "react";
-import { getBooks } from "@/lib/hygraph";
 import { Book } from "@/types/book";
 import BookCard from "@/components/BookCard";
 
-export default async function BooksList() {
-  const books = await getBooks();
+interface BooksListProps {
+  books: Book[];
+}
 
+export default function BooksList({ books }: BooksListProps) {
   return (
-    <Suspense>
-      <ul>
-        {books.map((book: Book, i: number) => (
-          <BookCard key={i} book={book} />
-        ))}
-      </ul>
-    </Suspense>
+    <ul>
+      {books.map((book) => (
+        <BookCard key={book.id} book={book} />
+      ))}
+    </ul>
   );
 }

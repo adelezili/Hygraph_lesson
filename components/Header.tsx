@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
-interface NavigationLink {
-  id: string;
-  label: string;
-  url: string;
-}
+import { NavigationLink } from "@/types/layout";
 
 interface HeaderProps {
   logoUrl: string;

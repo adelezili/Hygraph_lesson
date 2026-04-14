@@ -33,7 +33,7 @@ export default async function Home() {
                   className="object-cover"
                 />
               )}
-              <div className="relative z-10 w-1/4 flex flex-col justify-end gap-6 bg-site-text text-white p-12 m-10">
+              <div className="relative z-10 w-1/3 flex flex-col justify-end gap-6 bg-site-text text-white p-12 m-10">
                 <h2 className="text-5xl font-light leading-tight">
                   {section.title}
                 </h2>

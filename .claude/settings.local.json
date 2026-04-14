@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(cat -n /Users/adelezilinskaite/Desktop/Projects/hygraph-library/app/books/[slug]/page.tsx)",
-      "Bash(python3 -c ':*)"
+      "Bash(python3 -c ':*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm uninstall:*)"
     ]
   }
 }

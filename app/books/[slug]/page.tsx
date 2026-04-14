@@ -1,6 +1,11 @@
 import Image from "next/image";
-import { getBook } from "@/lib/hygraph";
-import { Book } from "@/types/book";
+import { notFound } from "next/navigation";
+import { getBook, getBooks } from "@/lib/hygraph";
+
+export async function generateStaticParams() {
+  const books = await getBooks();
+  return books.map((book) => ({ slug: book.slug }));
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -8,7 +13,9 @@ interface Props {
 
 export default async function BookPage({ params }: Props) {
   const { slug } = await params;
-  const book: Book = await getBook(slug);
+  const book = await getBook(slug);
+
+  if (!book) notFound();
 
   return (
     <main className="flex flex-col flex-1">
