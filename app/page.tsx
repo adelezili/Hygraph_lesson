@@ -13,7 +13,7 @@ export default async function Home() {
         if (section.__typename === "FeaturedBooks") {
           return (
             <section key={section.id}>
-              <ul className="grid grid-cols-4 sm:grid-cols-2 gap-6">
+              <ul className="grid grid-cols-4 gap-6">
                 {section.books.map((book: Book & { id: string }) => (
                   <BookCard key={book.id} book={book} />
                 ))}

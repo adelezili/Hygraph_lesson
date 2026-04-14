@@ -15,7 +15,7 @@ export default function Header({ logoUrl, navigationLinks }: HeaderProps) {
   const lastIndex = navigationLinks.length - 1;
 
   return (
-    <header className="w-full border-b border-site-border">
+    <header className="w-full border-b border-site-border bg-white">
       <div className="flex items-center justify-between px-6 py-4">
         <Image src={logoUrl} alt="Site logo" width={160} height={48} />
         <nav>
