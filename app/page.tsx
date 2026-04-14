@@ -1,11 +1,45 @@
-import BooksList from "@/components/BooksList";
+import Image from "next/image";
+import { getHomepage } from "@/lib/hygraph";
+import { PageSection } from "@/types/page";
+import { Book } from "@/types/book";
+import BookCard from "@/components/BookCard";
 
-export default function Home() {
+export default async function Home() {
+  const page = await getHomepage();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <BooksList />
-      </main>
-    </div>
+    <main>
+      {page.pageSections.map((section: PageSection) => {
+        if (section.__typename === "FeaturedBooks") {
+          return (
+            <section key={section.id}>
+              <ul className="grid grid-cols-4 sm:grid-cols-2 gap-6">
+                {section.books.map((book: Book & { id: string }) => (
+                  <BookCard key={book.id} book={book} />
+                ))}
+              </ul>
+            </section>
+          );
+        }
+
+        if (section.__typename === "Section") {
+          return (
+            <section key={section.id}>
+              {section.backgroundImage?.url && (
+                <Image
+                  src={section.backgroundImage.url}
+                  alt=""
+                  fill
+                  className="object-cover -z-10"
+                />
+              )}
+              <h2 className="text-4xl font-bold">{section.title}</h2>
+            </section>
+          );
+        }
+
+        return null;
+      })}
+    </main>
   );
 }

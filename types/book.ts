@@ -1,5 +1,6 @@
 export type Book = {
   bookData: {
+    title: string;
     author: { authorName: string; birthYear: number; country: string }[];
     genres: { genreName: string }[];
     year: number;

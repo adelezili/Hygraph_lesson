@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface NavigationLink {
   id: string;
   label: string;
@@ -5,16 +7,17 @@ interface NavigationLink {
 }
 
 interface HeaderProps {
+  logoUrl: string;
   navigationLinks: NavigationLink[];
 }
 
-export default function Header({ navigationLinks }: HeaderProps) {
+export default function Header({ logoUrl, navigationLinks }: HeaderProps) {
   const lastIndex = navigationLinks.length - 1;
 
   return (
     <header className="w-full border-b border-site-border">
       <div className="flex items-center justify-between px-6 py-4">
-        <p className="text-2xl font-black uppercase">Library title</p>
+        <Image src={logoUrl} alt="Site logo" width={160} height={48} />
         <nav>
           <ul className="flex items-center gap-6">
             {navigationLinks.map((link, i) => (

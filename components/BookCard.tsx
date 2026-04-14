@@ -1,29 +1,38 @@
 import Image from "next/image";
 import { Book } from "@/types/book";
-import { formatEnumLabel } from "@/lib/formatEnumLabel";
 
 export default function BookCard({ book }: { book: Book }) {
   const data = book.bookData;
+  const genre = data.genres[0]?.genreName ?? "";
 
   return (
-    <li>
+    <li className="flex flex-col border border-site-border">
       {data.coverImage?.url && (
-        <Image
-          src={data.coverImage.url}
-          width={100}
-          height={100}
-          alt=""
-        />
+        <div className="relative w-full aspect-[3/4] bg-site-bg">
+          <Image
+            src={data.coverImage.url}
+            alt={data.title}
+            fill
+            className="object-cover"
+          />
+        </div>
       )}
-      {data.author.map((a, j) => (
-        <p key={j}>
-          {a.authorName} ({a.birthYear}, {formatEnumLabel(a.country)})
+      <div className="relative flex flex-col gap-3 bg-site-bg p-4 border-t border-site-border">
+        <button className="absolute top-0 right-0 w-10 h-10 border-l border-b border-site-border flex items-center justify-center text-xl font-light">
+          +
+        </button>
+        <p className="text-sm font-black uppercase pr-10">
+          {data.title}{" "}
+          <span className="font-normal tracking-widest">
+            {genre.toUpperCase()}
+          </span>
         </p>
-      ))}
-      <p>Genres: {data.genres.map((g) => g.genreName).join(", ")}</p>
-      <p>Year: {data.year}</p>
-      <p>Rating: {data.rating}</p>
-      <p>{data.description}</p>
+        <p className="text-sm">{data.description}</p>
+        <p className="text-sm">
+          <strong>{data.rating}</strong>{" "}
+          <span className="uppercase tracking-widest text-xs">Rating</span>
+        </p>
+      </div>
     </li>
   );
 }
