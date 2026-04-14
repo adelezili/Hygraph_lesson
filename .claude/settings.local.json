@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat -n /Users/adelezilinskaite/Desktop/Projects/hygraph-library/app/books/[slug]/page.tsx)",
+      "Bash(python3 -c ':*)"
+    ]
+  }
+}

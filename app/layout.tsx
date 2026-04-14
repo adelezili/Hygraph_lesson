@@ -25,18 +25,18 @@ export default async function RootLayout({
 }>) {
   const generalLayout = await getGeneralLayout();
   return (
-    <>
-      <Header
-        logoUrl={generalLayout.logo.url}
-        navigationLinks={generalLayout.headerMenu.navigationLinks}
-      />
-      <html lang="en" className={`${afacadFlux.variable} h-full`}>
-        <body className="min-h-full w-full">{children}</body>
-      </html>
-      <Footer
-        title={generalLayout.footerMenu.title}
-        navigationLinks={generalLayout.footerMenu.navigationLinks}
-      />
-    </>
+    <html lang="en" className={`${afacadFlux.variable} h-full`}>
+      <body className="min-h-full w-full flex flex-col">
+        <Header
+          logoUrl={generalLayout.logo.url}
+          navigationLinks={generalLayout.headerMenu.navigationLinks}
+        />
+        {children}
+        <Footer
+          title={generalLayout.footerMenu.title}
+          navigationLinks={generalLayout.footerMenu.navigationLinks}
+        />
+      </body>
+    </html>
   );
 }

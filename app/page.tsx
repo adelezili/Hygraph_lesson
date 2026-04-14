@@ -24,16 +24,23 @@ export default async function Home() {
 
         if (section.__typename === "Section") {
           return (
-            <section key={section.id}>
+            <section key={section.id} className="relative min-h-[500px] flex">
               {section.backgroundImage?.url && (
                 <Image
                   src={section.backgroundImage.url}
                   alt=""
                   fill
-                  className="object-cover -z-10"
+                  className="object-cover"
                 />
               )}
-              <h2 className="text-4xl font-bold">{section.title}</h2>
+              <div className="relative z-10 w-1/4 flex flex-col justify-end gap-6 bg-site-text text-white p-12 m-10">
+                <h2 className="text-5xl font-light leading-tight">
+                  {section.title}
+                </h2>
+                <p className="text-xs font-bold uppercase tracking-widest">
+                  {section.description}
+                </p>
+              </div>
             </section>
           );
         }
