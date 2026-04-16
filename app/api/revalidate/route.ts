@@ -4,6 +4,7 @@ import { revalidateTag } from "next/cache";
 // Maps Hygraph model __typename values to cache tags
 const MODEL_TAG_MAP: Record<string, string[]> = {
   Book: ["books"],
+  Edition: ["books"],
   Page: ["homepage"],
   FeaturedBooks: ["homepage"],
   Section: ["homepage"],

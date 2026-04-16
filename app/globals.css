@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-site-bg: #EAE4DC;
-  --color-site-text: #1A1A1A;
-  --color-site-border: #1A1A1A;
-  --color-site-accent: #BEFF47;
+  --color-site-bg: #eae4dc;
+  --color-site-text: #1a1a1a;
+  --color-site-border: #1a1a1a;
+  --color-site-accent: #e6bfff;
   --font-sans: var(--font-afacad-flux);
 }

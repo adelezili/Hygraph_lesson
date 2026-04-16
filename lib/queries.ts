@@ -1,6 +1,6 @@
 export const GET_BOOKS = `
-  query MyQuery {
-    books {
+  query GetBooks($locales: [Locale!]! = [en]) {
+    books(locales: $locales) {
       id
       title
       slug
@@ -13,15 +13,12 @@ export const GET_BOOKS = `
       year
       description
       rating
-      coverImage {
-        url
-      }
     }
   }
 `;
 
 export const GET_HOMEPAGE = `
-query MyQuery {
+query GetHomepage {
   page(where: {slug: "home"}) {
     slug
     title
@@ -29,18 +26,23 @@ query MyQuery {
       ... on FeaturedBooks {
         __typename
         id
-        books {
+        books(locales: [en]) {
           id
           title
           slug
           rating
           year
           description
-          coverImage {
-            url
-          }
           author {
             authorName
+          }
+          genre {
+            genreName
+          }
+          editions {
+            coverImage {
+              url
+            }
           }
         }
       }
@@ -52,6 +54,16 @@ query MyQuery {
         backgroundImage {
           url
         }
+        button {
+          label
+          url
+          backgroundColor {
+            hex
+          }
+        }
+        variant {
+          variantName
+        }
       }
     }
   }
@@ -59,19 +71,28 @@ query MyQuery {
 `;
 
 export const GET_BOOK = `
-query MyQuery($slug: String!) {
-  book(where: { slug: $slug }) {
+query GetBook($slug: String!, $locales: [Locale!]! = [en]) {
+  book(where: { slug: $slug }, locales: $locales) {
     id
     title
     slug
     author {
       authorName
     }
+    genre {
+      genreName
+    }
     year
     description
     rating
-    coverImage {
-      url
+    editions {
+      format
+      pageCount
+      duration
+      coverImage {
+        url
+      }
+      availability
     }
   }
 }

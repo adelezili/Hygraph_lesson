@@ -6,19 +6,19 @@ export default function BookCard({ book }: { book: Book }) {
   const genre = book.genre?.genreName ?? "";
 
   return (
-    <li className="flex flex-col border border-site-border cursor-pointer">
+    <li className="flex flex-col border-r border-site-border last:border-r-0 cursor-pointer bg-site-bg">
       <Link href={`/books/${book.slug}`} className="flex flex-col flex-1">
-        {book.coverImage?.url && (
+        {book.editions[0]?.coverImage?.url && (
           <div className="relative w-full aspect-[3/4] bg-site-bg">
             <Image
-              src={book.coverImage.url}
+              src={book.editions[0].coverImage.url}
               alt={book.title}
               fill
               className="object-cover"
             />
           </div>
         )}
-        <div className="relative flex flex-col gap-1 bg-site-bg p-4 border-t border-site-border">
+        <div className="relative flex flex-col gap-1 p-4 border-t border-site-border">
           <button className="absolute top-0 right-0 w-10 h-10 border-l border-b border-site-border flex items-center justify-center text-xl font-light">
             ➜
           </button>

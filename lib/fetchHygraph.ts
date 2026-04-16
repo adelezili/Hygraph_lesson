@@ -1,7 +1,7 @@
 export async function fetchHygraph<T>(
   query: string,
   variables: Record<string, unknown> = {},
-  fetchOptions: { tags?: string[] } = {}
+  fetchOptions: { tags?: string[] } = {},
 ): Promise<T> {
   const { tags } = fetchOptions;
 
@@ -16,7 +16,8 @@ export async function fetchHygraph<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`Hygraph request failed: ${response.status}`);
+    const body = await response.text();
+    throw new Error(`Hygraph request failed: ${response.status} — ${body}`);
   }
 
   const { data, errors } = await response.json();
@@ -24,7 +25,7 @@ export async function fetchHygraph<T>(
   if (errors) {
     console.error("Hygraph errors:", JSON.stringify(errors, null, 2));
     throw new Error(
-      errors.map((e: { message: string }) => e.message).join(", ")
+      errors.map((e: { message: string }) => e.message).join(", "),
     );
   }
 

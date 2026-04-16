@@ -1,3 +1,11 @@
+export interface Edition {
+  format: string;
+  pageCount: number | null;
+  duration: string | null;
+  coverImage: { url: string } | null;
+  availability: boolean;
+}
+
 export interface Book {
   id: string;
   title: string;
@@ -7,5 +15,5 @@ export interface Book {
   year: number;
   description: string;
   rating: number;
-  coverImage: { url: string } | null;
+  editions: Edition[];
 }

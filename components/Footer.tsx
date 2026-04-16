@@ -7,8 +7,8 @@ interface FooterProps {
 
 export default function Footer({ title, navigationLinks }: FooterProps) {
   return (
-    <footer className="w-full bg-site-bg text-site-text border-l border-site-border">
-      <nav className="px-8 py-16 flex flex-col gap-6">
+    <footer className="w-full bg-site-bg text-site-text">
+      <nav className="p-2 md:px-8 md:py-16 flex flex-col gap-6">
         <p className="text-7xl font-bold">{title}</p>
         <ul className="flex flex-col gap-4">
           {navigationLinks.map((link) => (
