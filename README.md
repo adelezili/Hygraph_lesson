@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hygraph Library
+
+A book library site powered by [Hygraph](https://hygraph.com) as a headless CMS. Displays featured books on the homepage and individual book detail pages with edition variants.
+
+## Tech Stack
+
+- **Next.js 16** (App Router, React Server Components)
+- **TypeScript**
+- **Tailwind CSS 4**
+- **Hygraph** — GraphQL CMS for all book content
+- **ISR** — on-demand revalidation via Hygraph webhooks
+
+## Features
+
+- Homepage with featured book sections
+- Book detail pages (`/books/[slug]`) with editions (Hardcover, Paperback, Audiobook, etc.)
+- Statically generated pages with `generateStaticParams`
+- On-demand cache revalidation via `/api/revalidate`
 
 ## Getting Started
 
-First, run the development server:
+1. Copy `.env.local.example` to `.env.local` and add your Hygraph endpoint and token
+2. Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+HYGRAPH_ENDPOINT=       # Hygraph GraphQL API URL
+HYGRAPH_TOKEN=          # Hygraph read token
+REVALIDATION_TOKEN=     # Bearer token for /api/revalidate webhook
+```
 
-## Learn More
+## Commands
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev        # Start dev server
+npm run build      # Production build
+npm run lint       # Run ESLint
+```

@@ -4,7 +4,8 @@
       "Bash(cat -n /Users/adelezilinskaite/Desktop/Projects/hygraph-library/app/books/[slug]/page.tsx)",
       "Bash(python3 -c ':*)",
       "Bash(npx tsc:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(grep -E \"^/Users/adelezilinskaite/Desktop/Projects/hygraph-library/[^/]+\\\\.\\(ts|tsx|js|jsx\\)$|^/Users/adelezilinskaite/Desktop/Projects/hygraph-library/\\(src|pages|app\\)\")"
     ]
   }
 }
