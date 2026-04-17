@@ -94,6 +94,7 @@ query GetBook($slug: String!, $locales: [Locale!]! = [en]) {
       }
       availability
     }
+    reviews
   }
 }
 `;

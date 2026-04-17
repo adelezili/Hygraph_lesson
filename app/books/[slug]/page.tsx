@@ -95,6 +95,14 @@ export default async function BookPage({ params }: Props) {
           </div>
         </div>
       )}
+
+      {book.reviews && (
+        <div className="p-12 border-y border-site-border bg-mauve-50">
+          <h2 className="text-xs uppercase tracking-widest mb-6">Reviews</h2>
+          <p className="text-sm font-semibold mb-2 capitalize">{book.reviews.title}</p>
+          <p className="text-sm text-gray-600">{book.reviews.body}</p>
+        </div>
+      )}
     </main>
   );
 }

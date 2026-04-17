@@ -16,4 +16,5 @@ export interface Book {
   description: string;
   rating: number;
   editions: Edition[];
+  reviews: { id: number; userId: number; title: string; body: string } | null;
 }
